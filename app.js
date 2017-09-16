@@ -14,14 +14,14 @@ var catalog = require('./routes/catalog') // Import routes for "catalog" area of
 
 var app = express()
 
-var mongoDB = 'mongodb://papatest:papatestio@ds135444.mlab.com:35444/library_data'
+var mongoDB = process.env.MONGODB_URI ||'mongodb://papatest:papatestio@ds135444.mlab.com:35444/library_data'
 mongoose.connect(mongoDB)
 var db = mongoose.connection
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'pug')x
+app.set('view engine', 'pug')
 
 // uncomment after placing your favicon in /public
 
